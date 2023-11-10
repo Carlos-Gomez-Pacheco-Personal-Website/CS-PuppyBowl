@@ -5,9 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- import JavaScript -->
-    <script defer src="script.js"></script>
-
     <!-- import CSS -->
     <link rel="stylesheet" href="styles.css" />
 
@@ -17,8 +14,27 @@
   <body>
     <!-- form to add new players -->
     <div id="new-player-form"></div>
+    <form action="submit">
+      <label>Breed</label>
+      <input type="text" name="title" />
+      <label>cohortId</label>
+      <input type="number" name="date" />
+      <label>id</label>
+      <input type="number" name="description" />
+      <label>imagerUrl</label>
+      <input type="text" name="title" />
+      <label>name</label>
+      <input type="datetime-local" name="date" />
+      <label>status</label>
+      <input type="enum" name="location" />
+      <label>Team Id</label>
+      <input type="number" name="description" />
+      <button type="submit" name="add-button">Add</button>
+    </form>
 
     <!-- container for all players -->
     <div id="all-players-container"></div>
+    <!-- import JavaScript -->
+    <script defer src="script.js"></script>
   </body>
 </html>
