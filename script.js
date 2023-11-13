@@ -82,8 +82,11 @@ const removePlayer = async (playerId) => {
  * @param playerList - an array of player objects
  * @returns the playerContainerHTML variable.
  */
-const renderAllPlayers = (playerList) => {
+const renderAllPlayers = async (playerList) => {
+  const table = document.getElementById("all-player-table");
+  table.innerHTML;
   try {
+    const response = await fetch(APIURL);
   } catch (err) {
     console.error("Uh oh, trouble rendering players!", err);
   }

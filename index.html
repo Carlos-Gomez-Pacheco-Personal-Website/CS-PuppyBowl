@@ -14,7 +14,7 @@
   <body>
     <!-- form to add new players -->
     <div id="new-player-form"></div>
-    <form action="submit">
+    <form class="form" action="submit">
       <label>Breed</label>
       <input type="text" name="title" />
       <label>cohortId</label>
@@ -33,7 +33,9 @@
     </form>
 
     <!-- container for all players -->
-    <div id="all-players-container"></div>
+    <div id="all-players-container">
+      <ul id="all-player-table"></ul>
+    </div>
     <!-- import JavaScript -->
     <script defer src="script.js"></script>
   </body>
