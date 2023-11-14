@@ -40,6 +40,7 @@ const fetchSinglePlayer = async (playerId) => {
     if (json.error) {
       throw new Error(json.error);
     }
+    state.player = playerId;
   } catch (err) {
     console.error(`Oh no, trouble fetching player #${playerId}!`, err);
   }
