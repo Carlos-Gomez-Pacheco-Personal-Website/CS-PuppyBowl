@@ -4,9 +4,53 @@
   box-sizing: border-box;
 }
 
-.form {
+html,
+body {
+  min-height: 100vh;
+  margin: 0;
+}
+
+main {
+  min-height: 100vh;
+}
+
+.background {
+  background-image: url("./images/1137.jpg");
+}
+
+.h1s {
+  font-size: 28px;
+  text-align: center;
+  font-family: "Audiowide", sans-serif;
+  color: black;
+  padding-top: 50px;
+  margin: 0;
+}
+
+.form-c {
   display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  justify-content: center !important;
+  padding: 50px 50px;
+  align-items: center;
   flex-direction: column;
-  width: 200px;
+  font-size: 20px;
+  font-weight: 750;
+  line-height: 2;
+  width: 100%;
   height: auto;
+  background-clip: padding-box;
+  border-radius: 0.25rem;
+  border: 1px solid #ced4da;
+}
+
+.submit {
+  background: #e7b019 !important;
+  color: #fff;
+  width: 200px;
+  height: 50px;
+  border: 1px solid #e7b019;
+  border-radius: 0.25rem;
 }

@@ -12,31 +12,32 @@
   </head>
 
   <body>
-    <!-- form to add new players -->
-    <div id="new-player-form"></div>
-    <form class="form" action="submit">
-      <label>Breed</label>
-      <input type="text" name="title" />
-      <label>cohortId</label>
-      <input type="number" name="date" />
-      <label>id</label>
-      <input type="number" name="description" />
-      <label>imagerUrl</label>
-      <input type="text" name="title" />
-      <label>name</label>
-      <input type="datetime-local" name="date" />
-      <label>status</label>
-      <input type="enum" name="location" />
-      <label>Team Id</label>
-      <input type="number" name="description" />
-      <button type="submit" name="add-button">Add</button>
-    </form>
+    <main class="background">
+      <h1 class="h1s">Welcome to PuppyBowl</h1>
+      <div id="new-player-form">
+        <!-- form to add new players -->
+        <form class="form-c" action="submit">
+          <label>Name: <input type="text" name="name" /></label>
 
-    <!-- container for all players -->
-    <div id="all-players-container">
-      <ul id="all-player-table"></ul>
-    </div>
-    <!-- import JavaScript -->
-    <script defer src="script.js"></script>
+          <label>Breed: <input type="text" name="Breed" /></label>
+
+          <label>Status: <input type="text" name="Status" /></label>
+          <label
+            >Image: <input type="text" name="Image-Url" placeholder="Image-Url"
+          /></label>
+          <label>TeamID: <input type="number" name="TeamID" /></label>
+
+          <button type="submit" name="add-button" class="submit">
+            Add new puppy
+          </button>
+        </form>
+      </div>
+      <!-- container for all players -->
+      <div id="all-players-container">
+        <ul id="all-player-table"></ul>
+      </div>
+      <!-- import JavaScript -->
+      <script defer src="script.js"></script>
+    </main>
   </body>
 </html>
