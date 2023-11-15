@@ -69,8 +69,8 @@ const removePlayer = async (playerId) => {
     });
     const json = response.json();
     const puppies = json.data;
-    if (json.error) {
-      throw new Error(json.error);
+    if (!response.ok) {
+      throw new Error("Puppy could not be deleted.");
     }
     state.players = puppies;
     init();
@@ -103,10 +103,32 @@ const removePlayer = async (playerId) => {
  * @returns the playerContainerHTML variable.
  */
 const renderAllPlayers = async (playerList) => {
-  const table = document.getElementById("all-player-table");
-  table.innerHTML;
+  // const table = document.getElementById("all-player-table");
+  // table.innerHTML;
   try {
-    const response = await fetch(APIURL);
+    const playerIs = playerList.map((player) => {
+      const playerI = document.createElement("ul");
+      playerI.classList.add("Player");
+      playerI.innerHTML = `
+      <img class= "pic" src= "${player.imageUrl}" alt="${player.name}" />
+      <h3>${player.name}</h3>
+      <ul>${player.teamId}</ul>
+      <ul><button class="see-details">See Details</button></ul>
+      <ul><button class="remove">Remove from Roster</button></ul>
+      `;
+      const seeDetails = playerI.querySelector(".see-details");
+      seeDetails.addEventListener("click", () => {
+        alert("Player-Details");
+      });
+
+      const remove = playerI.querySelector(".remove");
+      playerI.append(remove);
+      remove.addEventListener("click", () => {
+        removePlayer(player.id);
+      });
+      return playerI;
+    });
+    playerContainer.replaceChildren(...playerIs);
   } catch (err) {
     console.error("Uh oh, trouble rendering players!", err);
   }
