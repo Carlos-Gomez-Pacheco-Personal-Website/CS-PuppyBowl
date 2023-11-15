@@ -4,7 +4,7 @@ const newPlayerFormContainer = document.getElementById("new-player-form");
 // Add your cohort name to the cohortName variable below, replacing the 'COHORT-NAME' placeholder
 const cohortName = "2308-ACC-PT-WEB-PT-A";
 // Use the APIURL variable for fetch requests
-const APIURL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}/players`;
+const APIURL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}`;
 
 const state = {
   players: [],
@@ -16,15 +16,13 @@ const state = {
  */
 const fetchAllPlayers = async () => {
   try {
-    const response = await fetch(APIURL);
+    const response = await fetch(APIURL + "/players");
     const json = await response.json();
-    const AllPlayers = json.data;
-    console.log("inside GET");
-    console.log(AllPlayers);
+    const players = json.data.players;
     if (json.error) {
       throw new Error(json.error);
     }
-    state.players = AllPlayers;
+    return players;
   } catch (err) {
     console.error("Uh oh, trouble fetching players!", err);
   }
@@ -32,29 +30,50 @@ const fetchAllPlayers = async () => {
 
 const fetchSinglePlayer = async (playerId) => {
   try {
-    const response = await fetch(APIURL);
+    const response = await fetch(APIURL + "/players/player-ID");
     const json = await response.json();
-    const playerId = json.data;
-    console.log("inside GET");
-    console.log(playerId);
-    if (json.error) {
-      throw new Error(json.error);
-    }
-    state.player = playerId;
+    const playerId = json.data.players;
+    return playerId;
   } catch (err) {
     console.error(`Oh no, trouble fetching player #${playerId}!`, err);
   }
 };
 
+// Add a new Puppy to the game //
 const addNewPlayer = async (playerObj) => {
   try {
+    const response = await fetch(APIURL + "/players/", {
+      method: "POST",
+      headers: { "Content-Type": "aplication/json" },
+      body: JSON.stringify(playerObj),
+    });
+    const json = await response.json();
+    if (json.error) {
+      throw new Error(json.error);
+    }
+    init();
   } catch (err) {
     console.error("Oops, something went wrong with adding that player!", err);
   }
 };
+document.querySelector("div").addEventListener("submit", (event) => {
+  const playerEL = event.target;
+  event.preventDefault();
+});
 
+// Detele a Puppy from the game //
 const removePlayer = async (playerId) => {
   try {
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: "DELETE",
+    });
+    const json = response.json();
+    const puppies = json.data;
+    if (json.error) {
+      throw new Error(json.error);
+    }
+    state.players = puppies;
+    init();
   } catch (err) {
     console.error(
       `Whoops, trouble removing player #${playerId} from the roster!`,
@@ -109,6 +128,11 @@ const init = async () => {
   renderAllPlayers(players);
 
   renderNewPlayerForm();
+};
+
+const showPlayers = async () => {
+  const players = await fetchAllPlayers();
+  renderAllPlayers(players);
 };
 
 init();
