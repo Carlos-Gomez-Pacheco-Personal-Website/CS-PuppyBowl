@@ -1,4 +1,5 @@
 const playerContainer = document.getElementById("all-players-container");
+const teamContainer = document.getElementById("all-teams-container");
 const newPlayerFormContainer = document.getElementById("new-player-form");
 
 // Add your cohort name to the cohortName variable below, replacing the 'COHORT-NAME' placeholder
@@ -32,8 +33,11 @@ const fetchSinglePlayer = async (playerId) => {
   try {
     const response = await fetch(APIURL + "players/" + playerId);
     const json = await response.json();
-    const playerId = json.data.players;
-    return playerId;
+    const player = json.data.player;
+    if (json.error) {
+      throw new Error(json.error);
+    }
+    return player;
   } catch (err) {
     console.error(`Oh no, trouble fetching player #${playerId}!`, err);
   }
@@ -155,6 +159,38 @@ const renderNewPlayerForm = () => {
     console.error("Uh oh, trouble rendering the new player form!", err);
   }
 };
+
+// Group players by teamID
+const groupPlayersByTeam = (players) => {
+  return players.reduce((groupedPlayers, player) => {
+    const teamKey = player.teamID;
+    if (!groupedPlayers[teamKey]) {
+      groupedPlayers[teamKey] = [];
+    }
+    groupedPlayers[teamKey].push(player);
+    return groupedPlayers;
+  }, {});
+};
+
+// Render grouped players
+const renderGroupedPlayers = (groupedPlayers) => {
+  for (const team in groupedPlayers) {
+    const teamContainer = document.createElement("div");
+    teamContainer.innerHTML = `<h2>Team ${team}</h2>`;
+    groupedPlayers[team].forEach((player) => {
+      const playerElement = document.createElement("p");
+      playerElement.textContent = `Player ID: ${player.id}, Player Name: ${player.name}`;
+      teamContainer.appendChild(playerElement);
+    });
+    playerContainer.appendChild(teamContainer);
+  }
+};
+
+// Fetch all players, group them by teamID and render
+fetchAllPlayers().then((players) => {
+  const groupedPlayers = groupPlayersByTeam(players);
+  renderGroupedPlayers(groupedPlayers);
+});
 
 const init = async () => {
   const players = await fetchAllPlayers();
