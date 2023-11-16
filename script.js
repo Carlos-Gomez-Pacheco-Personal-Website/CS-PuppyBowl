@@ -4,7 +4,7 @@ const newPlayerFormContainer = document.getElementById("new-player-form");
 // Add your cohort name to the cohortName variable below, replacing the 'COHORT-NAME' placeholder
 const cohortName = "2308-ACC-PT-WEB-PT-A";
 // Use the APIURL variable for fetch requests
-const APIURL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}`;
+const APIURL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}/`;
 
 const state = {
   players: [],
@@ -16,7 +16,7 @@ const state = {
  */
 const fetchAllPlayers = async () => {
   try {
-    const response = await fetch(APIURL + "/players");
+    const response = await fetch(APIURL + "players");
     const json = await response.json();
     const players = json.data.players;
     if (json.error) {
@@ -30,7 +30,7 @@ const fetchAllPlayers = async () => {
 
 const fetchSinglePlayer = async (playerId) => {
   try {
-    const response = await fetch(APIURL + "/players/player-ID");
+    const response = await fetch(APIURL + "players/player-ID");
     const json = await response.json();
     const playerId = json.data.players;
     return playerId;
@@ -42,7 +42,7 @@ const fetchSinglePlayer = async (playerId) => {
 // Add a new Puppy to the game //
 const addNewPlayer = async (playerObj) => {
   try {
-    const response = await fetch(APIURL + "/players/", {
+    const response = await fetch(APIURL + "players/", {
       method: "POST",
       headers: { "Content-Type": "aplication/json" },
       body: JSON.stringify(playerObj),
@@ -69,8 +69,8 @@ const removePlayer = async (playerId) => {
     });
     const json = response.json();
     const puppies = json.data;
-    if (!response.ok) {
-      throw new Error("Puppy could not be deleted.");
+    if (json.error) {
+      throw new Error(json.error);
     }
     state.players = puppies;
     init();
@@ -102,27 +102,54 @@ const removePlayer = async (playerId) => {
  * @param playerList - an array of player objects
  * @returns the playerContainerHTML variable.
  */
-const renderAllPlayers = async (playerList) => {
-  // const table = document.getElementById("all-player-table");
-  // table.innerHTML;
+// const renderAllPlayers = (playerList) => {
+//   try {
+//     const playerIs = playerList.map((player) => {
+//       const playerI = document.createElement("ul");
+//       playerI.classList.add("Player");
+//       playerI.innerHTML = `<div class = "blocks">
+//       <img class= "picture" src= "${player.imageUrl}" alt="${player.name}" />
+//       <h2>${player.name}</h2>
+//       <h3>${player.teamId}</h3>
+//       <ul><button class = "see-details">See Details</button></ul>
+//       <ul><button class = "remove">Remove from Roster</button></ul>
+//       </div>`;
+//       const seeDetails = playerI.querySelector(".see-details");
+//       seeDetails.addEventListener("click", () => {
+//         alert("Puppy-Details");
+//       });
+
+//       const remove = playerI.querySelector(".remove");
+//       playerI.append(remove);
+//       remove.addEventListener("click", () => {
+//         removePlayer(player.id);
+//       });
+//       return playerI;
+//     });
+//     playerContainer.replaceChildren(...playerIs);
+//   } catch (err) {
+//     console.error("Uh oh, trouble rendering players!", err);
+//   }
+// };
+
+const renderAllPlayers = (playerList) => {
   try {
     const playerIs = playerList.map((player) => {
-      const playerI = document.createElement("ul");
+      const playerI = document.createElement("li");
       playerI.classList.add("Player");
-      playerI.innerHTML = `
-      <img class= "pic" src= "${player.imageUrl}" alt="${player.name}" />
-      <h3>${player.name}</h3>
-      <ul>${player.teamId}</ul>
-      <ul><button class="see-details">See Details</button></ul>
-      <ul><button class="remove">Remove from Roster</button></ul>
-      `;
+      playerI.innerHTML = `<ul class = "blocks">
+      <li><img class= "picture" src= "${player.imageUrl}" alt="${player.name}" /></li>
+      <li><h2>${player.name}</h2></li>
+      <li><h3>${player.teamId}</h3></li>
+      <li><button class = "see-details">See Details</button></li>
+      <li><button class = "remove">Remove from Roster</button></li>
+      </ul>`;
       const seeDetails = playerI.querySelector(".see-details");
       seeDetails.addEventListener("click", () => {
-        alert("Player-Details");
+        fetchSinglePlayer(player.id);
       });
 
       const remove = playerI.querySelector(".remove");
-      playerI.append(remove);
       remove.addEventListener("click", () => {
         removePlayer(player.id);
       });
@@ -140,6 +167,18 @@ const renderAllPlayers = async (playerList) => {
  */
 const renderNewPlayerForm = () => {
   try {
+    const form = document.querySelector("form");
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      await addNewPlayer({
+        name: event.target.elements.name.value,
+        breed: event.target.elements.breed.value,
+        status: event.target.elements.status.value,
+        imageUrl: event.target.elements.imageUrl.value,
+        teamID: Number(event.target.elements.teamID.value),
+      });
+      init();
+    });
   } catch (err) {
     console.error("Uh oh, trouble rendering the new player form!", err);
   }
@@ -150,11 +189,6 @@ const init = async () => {
   renderAllPlayers(players);
 
   renderNewPlayerForm();
-};
-
-const showPlayers = async () => {
-  const players = await fetchAllPlayers();
-  renderAllPlayers(players);
 };
 
 init();
