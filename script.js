@@ -192,3 +192,44 @@ const init = async () => {
 };
 
 init();
+
+// const fetchSinglePlayer = async (playerId) => {
+//   try {
+//     const response = await fetch(APIURL + "players/" + playerId);
+//     // rest of the code...
+//   } catch (err) {
+//     console.error(`Oh no, trouble fetching player #${playerId}!`, err);
+//   }
+// };
+
+// const addNewPlayer = async (playerObj) => {
+//   try {
+//     const response = await fetch(APIURL + "players/", {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify(playerObj),
+//     });
+//     // rest of the code...
+//   } catch (err) {
+//     console.error("Oops, something went wrong with adding that player!", err);
+//   }
+// };
+
+// const form = document.querySelector("form");
+// form.addEventListener("submit", (event) => {
+//   // rest of the code...
+// });
+
+// const removePlayer = async (playerId) => {
+//   try {
+//     const response = await fetch(`${APIURL}players/${playerId}`, {
+//       method: "DELETE",
+//     });
+//     // rest of the code...
+//   } catch (err) {
+//     console.error(
+//       `Whoops, trouble removing player #${playerId} from the roster!`,
+//       err
+//     );
+//   }
+// };

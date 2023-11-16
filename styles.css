@@ -64,3 +64,11 @@ main {
 .blocks {
   border: 10px solid red;
 }
+
+.Player {
+  border: 10px solid green;
+  width: 100px;
+  height: auto;
+  display: flex;
+  flex-direction: column-reverse;
+}
