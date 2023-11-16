@@ -30,7 +30,7 @@ const fetchAllPlayers = async () => {
 
 const fetchSinglePlayer = async (playerId) => {
   try {
-    const response = await fetch(APIURL + "players/player-ID");
+    const response = await fetch(APIURL + "players/" + playerId);
     const json = await response.json();
     const playerId = json.data.players;
     return playerId;
@@ -44,7 +44,7 @@ const addNewPlayer = async (playerObj) => {
   try {
     const response = await fetch(APIURL + "players/", {
       method: "POST",
-      headers: { "Content-Type": "aplication/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(playerObj),
     });
     const json = await response.json();
@@ -56,7 +56,8 @@ const addNewPlayer = async (playerObj) => {
     console.error("Oops, something went wrong with adding that player!", err);
   }
 };
-document.querySelector("div").addEventListener("submit", (event) => {
+const form = document.querySelector("form");
+form.addEventListener("submit", (event) => {
   const playerEL = event.target;
   event.preventDefault();
 });
@@ -64,7 +65,7 @@ document.querySelector("div").addEventListener("submit", (event) => {
 // Detele a Puppy from the game //
 const removePlayer = async (playerId) => {
   try {
-    const response = await fetch(`${API_URL}/${id}`, {
+    const response = await fetch(`${APIURL}players/${playerId}`, {
       method: "DELETE",
     });
     const json = response.json();
@@ -102,47 +103,18 @@ const removePlayer = async (playerId) => {
  * @param playerList - an array of player objects
  * @returns the playerContainerHTML variable.
  */
-// const renderAllPlayers = (playerList) => {
-//   try {
-//     const playerIs = playerList.map((player) => {
-//       const playerI = document.createElement("ul");
-//       playerI.classList.add("Player");
-//       playerI.innerHTML = `<div class = "blocks">
-//       <img class= "picture" src= "${player.imageUrl}" alt="${player.name}" />
-//       <h2>${player.name}</h2>
-//       <h3>${player.teamId}</h3>
-//       <ul><button class = "see-details">See Details</button></ul>
-//       <ul><button class = "remove">Remove from Roster</button></ul>
-//       </div>`;
-//       const seeDetails = playerI.querySelector(".see-details");
-//       seeDetails.addEventListener("click", () => {
-//         alert("Puppy-Details");
-//       });
-
-//       const remove = playerI.querySelector(".remove");
-//       playerI.append(remove);
-//       remove.addEventListener("click", () => {
-//         removePlayer(player.id);
-//       });
-//       return playerI;
-//     });
-//     playerContainer.replaceChildren(...playerIs);
-//   } catch (err) {
-//     console.error("Uh oh, trouble rendering players!", err);
-//   }
-// };
 
 const renderAllPlayers = (playerList) => {
   try {
     const playerIs = playerList.map((player) => {
-      const playerI = document.createElement("li");
+      const playerI = document.createElement("ul");
       playerI.classList.add("Player");
       playerI.innerHTML = `<ul class = "blocks">
-      <li><img class= "picture" src= "${player.imageUrl}" alt="${player.name}" /></li>
-      <li><h2>${player.name}</h2></li>
-      <li><h3>${player.teamId}</h3></li>
-      <li><button class = "see-details">See Details</button></li>
-      <li><button class = "remove">Remove from Roster</button></li>
+      <ul><img class= "picture" src= "${player.imageUrl}" alt="${player.name}" /></ul>
+      <ul><h2>${player.name}</h2></ul>
+      <ul><h3>${player.teamId}</h3></ul>
+      <ul><button class = "see-details">See Details</button></ul>
+      <ul><button class = "remove">Remove from Roster</button></ul>
       </ul>`;
       const seeDetails = playerI.querySelector(".see-details");
       seeDetails.addEventListener("click", () => {
@@ -192,44 +164,3 @@ const init = async () => {
 };
 
 init();
-
-// const fetchSinglePlayer = async (playerId) => {
-//   try {
-//     const response = await fetch(APIURL + "players/" + playerId);
-//     // rest of the code...
-//   } catch (err) {
-//     console.error(`Oh no, trouble fetching player #${playerId}!`, err);
-//   }
-// };
-
-// const addNewPlayer = async (playerObj) => {
-//   try {
-//     const response = await fetch(APIURL + "players/", {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify(playerObj),
-//     });
-//     // rest of the code...
-//   } catch (err) {
-//     console.error("Oops, something went wrong with adding that player!", err);
-//   }
-// };
-
-// const form = document.querySelector("form");
-// form.addEventListener("submit", (event) => {
-//   // rest of the code...
-// });
-
-// const removePlayer = async (playerId) => {
-//   try {
-//     const response = await fetch(`${APIURL}players/${playerId}`, {
-//       method: "DELETE",
-//     });
-//     // rest of the code...
-//   } catch (err) {
-//     console.error(
-//       `Whoops, trouble removing player #${playerId} from the roster!`,
-//       err
-//     );
-//   }
-// };

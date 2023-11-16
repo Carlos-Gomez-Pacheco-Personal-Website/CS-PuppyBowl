@@ -12,28 +12,36 @@
   </head>
 
   <body>
-    <main class="background">
+    <main>
       <h1 class="h1s">Welcome to PuppyBowl</h1>
       <div id="new-player-form">
         <!-- form to add new players -->
         <form class="form-c" action="submit">
-          <label>Name: <input type="text" name="name" /></label>
-
-          <label>Breed: <input type="text" name="breed" /></label>
-
-          <label>Status: <input type="text" name="status" /></label>
           <label
-            >Image: <input type="text" name="imageUrl" placeholder="Image-Url"
+            >Name: <input type="text" name="name" placeholder="Dog's name"
           /></label>
-          <label>TeamID: <input type="number" name="teamID" /></label>
-
+          <label
+            >Breed: <input type="text" name="breed" placeholder="Dog's breed"
+          /></label>
+          <label
+            >Status:
+            <input type="emun" name="status" placeholder="field or bench"
+          /></label>
+          <label
+            >Image:
+            <input type="text" name="imageUrl" placeholder="URL from Image"
+          /></label>
+          <label
+            >TeamID:
+            <input type="number" name="teamID" placeholder="Team Number"
+          /></label>
           <button type="submit" name="add-button" class="submit">
             Add new puppy
           </button>
         </form>
       </div>
       <!-- container for all players -->
-      <div id="all-players-container">
+      <div id="all-players-container" class="table">
         <ul id="all-player-table"></ul>
       </div>
       <!-- import JavaScript -->
