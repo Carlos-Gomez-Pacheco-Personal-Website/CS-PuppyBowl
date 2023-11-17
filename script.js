@@ -142,12 +142,12 @@ const displayPlayerDetails = (player) => {
   playerDetailsSection.innerHTML = `<ul class="player-details">
     <h2>Name: ${player.name}</h2>
     <img class= "picture" src="${player.imageUrl}" alt="${player.name}" />
-    <ul><p>Breed: ${player.breed}</p><ul>
-    <ul><p>Status: ${player.status}</p><ul>
-    <ul><p>Created at: ${player.createdAt}</p><ul>
-    <ul><p>Updated at: ${player.updatedAt}</p><ul>
-    <ul><p>Team ID: ${player.teamId}</p><ul>
-    <ul><p>Cohort ID: ${player.cohortId}</p><ul>
+    <ul><p>Breed: </p><k class="k">${player.breed}</k><ul>
+    <ul><p>Status: </p><k class="k">${player.status}</k><ul>
+    <ul><p>Created at: </p><k class="k">${player.createdAt}</k><ul>
+    <ul><p>Updated at: </p><k class="k">${player.updatedAt}</k><ul>
+    <ul><p>Team ID: </p><k class="k">${player.teamId}</k><ul>
+    <ul><p>Cohort ID: </p><k class="k">${player.cohortId}</k><ul>
     </ul>`;
   const existingPlayerDetails = document.querySelector(".player-details");
   if (existingPlayerDetails) {
