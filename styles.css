@@ -16,13 +16,13 @@ body {
 
 .soccer-field {
   background: url("./images/soccer1033.jpg");
-  background-size: cover;
+  background-size: contain;
   min-height: 100%;
   margin: 0;
 }
 #wrapper {
   display: flex;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin: 0 100px 0 100px;
   height: 80dvh;
 }

@@ -18,16 +18,26 @@
         <!-- form to add new players -->
         <form action="submit" class="form-b">
           <label for="name">Name: </label
-          ><input type="text" name="name" placeholder="Dog's name" />
+          ><input id="name" type="text" name="name" placeholder="Dog's name" />
           <label for="breed">Breed: </label
-          ><input type="text" name="breed" placeholder="Dog's breed" />
+          ><input
+            id="breed"
+            type="text"
+            name="breed"
+            placeholder="Dog's breed"
+          />
           <label for="status">Status:</label>
           <select id="status" name="status" class="text">
             <option class="text" value="field" selected>field</option>
             <option class="text" value="bench">bench</option>
           </select>
           <label for="imageUrl">Image:</label
-          ><input type="text" name="imageUrl" placeholder="URL from Image" />
+          ><input
+            id="imageUrl"
+            type="text"
+            name="imageUrl"
+            placeholder="URL from Image"
+          />
           <label for="teamID">TeamID: </label
           ><input type="number" name="teamID" placeholder="Team Number" />
           <button type="submit" name="add-button" class="submit">
