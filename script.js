@@ -140,15 +140,19 @@ const renderAllPlayers = (playerList) => {
 const displayPlayerDetails = (player) => {
   const playerDetailsSection = document.createElement("div");
   playerDetailsSection.innerHTML = `<ul class="player-details">
-    <h2>${player.name}</h2>
-    <img src="${player.imageUrl}" alt="${player.name}" />
-    <p>Breed: ${player.breed}</p>
-    <p>Status: ${player.status}</p>
-    <p>Created at: ${player.createdAt}</p>
-    <p>Updated at: ${player.updatedAt}</p>
-    <p>Team ID: ${player.teamId}</p>
-    <p>Cohort ID: ${player.cohortId}</p>
+    <h2>Name: ${player.name}</h2>
+    <img class= "picture" src="${player.imageUrl}" alt="${player.name}" />
+    <ul><p>Breed: ${player.breed}</p><ul>
+    <ul><p>Status: ${player.status}</p><ul>
+    <ul><p>Created at: ${player.createdAt}</p><ul>
+    <ul><p>Updated at: ${player.updatedAt}</p><ul>
+    <ul><p>Team ID: ${player.teamId}</p><ul>
+    <ul><p>Cohort ID: ${player.cohortId}</p><ul>
     </ul>`;
+  const existingPlayerDetails = document.querySelector(".player-details");
+  if (existingPlayerDetails) {
+    existingPlayerDetails.remove();
+  }
   document.body.appendChild(playerDetailsSection);
 };
 

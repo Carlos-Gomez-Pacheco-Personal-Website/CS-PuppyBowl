@@ -13,10 +13,10 @@
 
   <body>
     <h1 class="h1s">Welcome to PuppyBowl</h1>
-    <main>
-      <div id="new-player-form">
+    <main id="wrapper">
+      <div id="new-player-form" class="form-c">
         <!-- form to add new players -->
-        <form class="form-c" action="submit">
+        <form action="submit">
           <label
             >Name: <input type="text" name="name" placeholder="Dog's name"
           /></label>
@@ -48,7 +48,7 @@
         </form>
       </div>
       <!-- container for all players -->
-      <div id="all-players-container" class="table"></div>
+      <div id="all-players-container" class="table soccer-field"></div>
       <!-- <div id="all-teams-container" class="table"></div> -->
       <!-- import JavaScript -->
       <script defer src="script.js"></script>
