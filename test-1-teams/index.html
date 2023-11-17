@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- import CSS -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <title>PuppyBowl</title>
+  </head>
+
+  <body>
+    <h1 class="h1s">Welcome to PuppyBowl</h1>
+    <main id="wrapper">
+      <div id="new-player-form" class="form-c">
+        <!-- form to add new players -->
+        <form action="submit" class="form-b">
+          <label for="name">Name: </label
+          ><input id="name" type="text" name="name" placeholder="Dog's name" />
+          <label for="breed">Breed: </label
+          ><input
+            id="breed"
+            type="text"
+            name="breed"
+            placeholder="Dog's breed"
+          />
+          <label for="status">Status:</label>
+          <select id="status" name="status" class="text">
+            <option class="text" value="field" selected>field</option>
+            <option class="text" value="bench">bench</option>
+          </select>
+          <label for="imageUrl">Image:</label
+          ><input
+            id="imageUrl"
+            type="text"
+            name="imageUrl"
+            placeholder="URL from Image"
+          />
+          <label for="teamID">TeamID: </label
+          ><input type="number" name="teamID" placeholder="Team Number" />
+          <button type="submit" name="add-button" class="submit">
+            Add new puppy
+          </button>
+        </form>
+      </div>
+      <!-- container for all players -->
+      <div id="all-players-container" class="table soccer-field"></div>
+      <!-- <button id="team-a-button">Show Team A</button>
+      <button id="team-b-button">Show Team B</button> -->
+      <!-- <div id="all-teams-container" class="table"></div> -->
+      <!-- import JavaScript -->
+      <script defer src="script.js"></script>
+    </main>
+  </body>
+</html>
