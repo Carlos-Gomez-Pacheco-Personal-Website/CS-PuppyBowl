@@ -11,6 +11,7 @@ body {
   min-height: 100vh;
   background: url("./images/1137-blur.jpg");
   background-size: cover;
+  /* background-size: contain; */
 }
 
 .soccer-field {
@@ -36,21 +37,14 @@ body {
 }
 
 /* //////////////////////////////// Form Syle ///////////////////////////////////////// */
-.form-c {
+/* .form-c {
   display: flex;
   flex-direction: column;
   height: 50%;
   width: 10rem;
   justify-items: center;
   justify-content: space-around;
-}
-.form-d {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  gap: 1rem;
-}
+} */
 
 .submit {
   background: #e7b019 !important;
@@ -63,6 +57,51 @@ body {
 }
 .submit input[type="submit"]:hover {
   background: #e7b019;
+}
+
+form {
+  width: 300px;
+  margin: 50px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+}
+
+form h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="select"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1),
+    -6px -6px 10px rgba(255, 255, 255, 0.7);
+}
+
+form button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: #1e90ff;
+  color: white;
+  font-size: 16px;
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1),
+    -6px -6px 10px rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #6495ed;
 }
 
 /* //////////////////////////////// Players Syle ///////////////////////////////////////// */
