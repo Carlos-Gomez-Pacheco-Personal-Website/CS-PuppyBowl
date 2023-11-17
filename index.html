@@ -16,39 +16,32 @@
     <main id="wrapper">
       <div id="new-player-form" class="form-c">
         <!-- form to add new players -->
-        <form action="submit">
-          <label
-            >Name: <input type="text" name="name" placeholder="Dog's name"
-          /></label>
-          <label
-            >Breed: <input type="text" name="breed" placeholder="Dog's breed"
-          /></label>
-          <!-- <label
+        <form action="submit" class="form-d">
+          <label for="name">Name: </label
+          ><input type="text" name="name" placeholder="Dog's name" />
+          <label for="breed">Breed: </label
+          ><input type="text" name="breed" placeholder="Dog's breed" />
+          <label for="status"
             >Status:
-            <input type="enum" name="status" placeholder="field or bench"
-          /></label> -->
-          <label
-            >Status:
-            <select name="status">
+            <select id="status" name="status">
               <option value="field" selected>field</option>
               <option value="bench">bench</option>
             </select>
           </label>
-          <label
-            >Image:
-            <input type="text" name="imageUrl" placeholder="URL from Image"
-          /></label>
-          <label
-            >TeamID:
-            <input type="number" name="teamID" placeholder="Team Number"
-          /></label>
+          <label for="imageUrl">Image: </label
+          ><input type="text" name="imageUrl" placeholder="URL from Image" />
+          <label for="teamID">TeamID: </label
+          ><input type="number" name="teamID" placeholder="Team Number" />
           <button type="submit" name="add-button" class="submit">
             Add new puppy
           </button>
         </form>
       </div>
       <!-- container for all players -->
-      <div id="all-players-container" class="table soccer-field"></div>
+      <div id="all-players-container" class="table soccer-field">
+        <button id="team-a-button">Show Team A</button>
+        <button id="team-b-button">Show Team B</button>
+      </div>
       <!-- <div id="all-teams-container" class="table"></div> -->
       <!-- import JavaScript -->
       <script defer src="script.js"></script>

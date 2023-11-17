@@ -14,7 +14,7 @@ body {
 }
 
 .soccer-field {
-  background: url("./images/1137.jpg");
+  background: url("./images/soccer1033.jpg");
   background-size: cover;
   min-height: 100%;
   margin: 0 10vh 10vh 10vh;
@@ -23,6 +23,7 @@ body {
   display: flex;
   border: 1px solid black;
   margin: 100px;
+  height: 80dvh;
 }
 
 .h1s {
@@ -36,24 +37,19 @@ body {
 
 /* //////////////////////////////// Form Syle ///////////////////////////////////////// */
 .form-c {
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: center !important;
-  padding: 50px 50px;
-  align-items: center;
+  display: flex;
   flex-direction: column;
-  font-size: 20px;
-  font-weight: 750;
-  line-height: 2;
-  width: 45%;
-  height: auto;
-  background-clip: padding-box;
-  border-radius: 0.25rem;
-  border: 10px solid #ced4da; */
-  display: inline-block;
-  width: 350px;
-  height: auto;
-  margin: 50px 50px;
+  height: 50%;
+  width: 10rem;
+  justify-items: center;
+  justify-content: space-around;
+}
+.form-d {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  gap: 1rem;
 }
 
 .submit {
