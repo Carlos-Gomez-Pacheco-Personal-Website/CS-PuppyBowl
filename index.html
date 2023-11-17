@@ -23,10 +23,17 @@
           <label
             >Breed: <input type="text" name="breed" placeholder="Dog's breed"
           /></label>
+          <!-- <label
+            >Status:
+            <input type="enum" name="status" placeholder="field or bench"
+          /></label> -->
           <label
             >Status:
-            <input type="emun" name="status" placeholder="field or bench"
-          /></label>
+            <select name="status">
+              <option value="field" selected>field</option>
+              <option value="bench">bench</option>
+            </select>
+          </label>
           <label
             >Image:
             <input type="text" name="imageUrl" placeholder="URL from Image"
@@ -42,7 +49,7 @@
       </div>
       <!-- container for all players -->
       <div id="all-players-container" class="table"></div>
-      <div id="all-teams-container" class="table"></div>
+      <!-- <div id="all-teams-container" class="table"></div> -->
       <!-- import JavaScript -->
       <script defer src="script.js"></script>
     </main>

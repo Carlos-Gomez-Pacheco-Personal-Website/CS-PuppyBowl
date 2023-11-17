@@ -37,7 +37,8 @@ const fetchSinglePlayer = async (playerId) => {
     if (json.error) {
       throw new Error(json.error);
     }
-    return player;
+    // return player;
+    displayPlayerDetails(player);
   } catch (err) {
     console.error(`Oh no, trouble fetching player #${playerId}!`, err);
   }
@@ -122,7 +123,7 @@ const renderAllPlayers = (playerList) => {
       </ul>`;
       const seeDetails = playerI.querySelector(".see-details");
       seeDetails.addEventListener("click", () => {
-        fetchSinglePlayer(player.id);
+        fetchSinglePlayer(player.id).then(displayPlayerDetails);
       });
 
       const remove = playerI.querySelector(".remove");
@@ -135,6 +136,20 @@ const renderAllPlayers = (playerList) => {
   } catch (err) {
     console.error("Uh oh, trouble rendering players!", err);
   }
+};
+const displayPlayerDetails = (player) => {
+  const playerDetailsSection = document.createElement("div");
+  playerDetailsSection.innerHTML = `<ul class="player-details">
+    <h2>${player.name}</h2>
+    <img src="${player.imageUrl}" alt="${player.name}" />
+    <p>Breed: ${player.breed}</p>
+    <p>Status: ${player.status}</p>
+    <p>Created at: ${player.createdAt}</p>
+    <p>Updated at: ${player.updatedAt}</p>
+    <p>Team ID: ${player.teamId}</p>
+    <p>Cohort ID: ${player.cohortId}</p>
+    </ul>`;
+  document.body.appendChild(playerDetailsSection);
 };
 
 /**
@@ -182,6 +197,7 @@ const renderGroupedPlayers = (groupedPlayers) => {
       playerElement.textContent = `Player ID: ${player.id}, Player Name: ${player.name}`;
       teamContainer.appendChild(playerElement);
     });
+    init();
     playerContainer.appendChild(teamContainer);
   }
 };
