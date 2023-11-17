@@ -18,6 +18,7 @@ body {
   background: url("./images/soccer1033.jpg") no-repeat center;
   background-size: cover;
   min-height: 100%;
+  width: 75%;
   margin: 0;
 }
 #wrapper {

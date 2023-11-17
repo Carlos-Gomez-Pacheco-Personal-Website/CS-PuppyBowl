@@ -49,6 +49,13 @@ renderTeams({ teamB: teams.teamB });
 
 // ... rest of your code ...
 
-In this code, the splitPlayersIntoTeams function splits the players into two teams. The renderTeams function takes the teams and creates a new div for each team, which includes a list of players in that team. The event listeners for the “Team A” and “Team B” buttons fetch all players, split them into teams, and render the respective team when clicked.
+const {teams} = response.data;
+//teams = [{},{},{}]
 
-Please note that you’ll need to have two buttons with the IDs “team-a-button” and “team-b-button” in your HTML for this to work. Also, make sure to replace "teams-container" with the actual ID of the container where you want to render the teams. If you have any questions or need further assistance, feel free to ask! 😊
+const {id,name,players} = teams
+
+id -> teamid
+name -> team name
+players -> [{}]
+
+the IDs “team-a-button” and “team-b-button” in your HTML for this to work. Also, make sure to replace "teams-container" with the actual ID of the container on HTML

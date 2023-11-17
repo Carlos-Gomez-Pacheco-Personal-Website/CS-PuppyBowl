@@ -37,7 +37,6 @@ const fetchSinglePlayer = async (playerId) => {
     if (json.error) {
       throw new Error(json.error);
     }
-    // return player;
     displayPlayerDetails(player);
   } catch (err) {
     console.error(`Oh no, trouble fetching player #${playerId}!`, err);
@@ -56,16 +55,12 @@ const addNewPlayer = async (playerObj) => {
     if (json.error) {
       throw new Error(json.error);
     }
-    init();
+    const players = await fetchAllPlayers();
+    renderAllPlayers(players);
   } catch (err) {
     console.error("Oops, something went wrong with adding that player!", err);
   }
 };
-const form = document.querySelector("form");
-form.addEventListener("submit", (event) => {
-  const playerEL = event.target;
-  event.preventDefault();
-});
 
 // Detele a Puppy from the game //
 const removePlayer = async (playerId) => {
@@ -78,8 +73,8 @@ const removePlayer = async (playerId) => {
     if (json.error) {
       throw new Error(json.error);
     }
-    state.players = puppies;
-    init();
+    const players = await fetchAllPlayers();
+    renderAllPlayers(players);
   } catch (err) {
     console.error(
       `Whoops, trouble removing player #${playerId} from the roster!`,
@@ -172,13 +167,12 @@ const renderNewPlayerForm = () => {
         imageUrl: event.target.elements.imageUrl.value,
         teamID: Number(event.target.elements.teamID.value),
       });
-      init();
     });
   } catch (err) {
     console.error("Uh oh, trouble rendering the new player form!", err);
   }
 };
-
+// Testing for split on teams /////////////////////////
 // Group players by teamID
 const groupPlayersByTeam = (players) => {
   return players.reduce((groupedPlayers, player) => {
@@ -201,10 +195,10 @@ const renderGroupedPlayers = (groupedPlayers) => {
       playerElement.textContent = `Player ID: ${player.id}, Player Name: ${player.name}`;
       teamContainer.appendChild(playerElement);
     });
-    init();
     playerContainer.appendChild(teamContainer);
   }
 };
+// Testing for split on teams /////////////////////////
 
 // Fetch all players, group them by teamID and render
 fetchAllPlayers().then((players) => {
@@ -215,7 +209,6 @@ fetchAllPlayers().then((players) => {
 const init = async () => {
   const players = await fetchAllPlayers();
   renderAllPlayers(players);
-
   renderNewPlayerForm();
 };
 
