@@ -15,8 +15,8 @@ body {
 }
 
 .soccer-field {
-  background: url("./images/soccer1033.jpg");
-  background-size: contain;
+  background: url("./images/soccer1033.jpg") no-repeat center;
+  background-size: cover;
   min-height: 100%;
   margin: 0;
 }
