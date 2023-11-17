@@ -130,13 +130,17 @@ select button:hover {
 }
 
 .blocks {
-  border: 10px solid red;
+  border: 5px solid rgb(196, 161, 57);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  padding-bottom: 20px;
 }
 
 .table {
   display: flex;
   justify-content: center;
-  border: 10px solid yellow;
+  border: 10px solid white;
 }
 
 #all-players-container {
@@ -147,7 +151,7 @@ select button:hover {
 }
 
 .Player {
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   padding: 1em;
   border-radius: 8px;
   text-align: center;
