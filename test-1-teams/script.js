@@ -172,32 +172,38 @@ const renderNewPlayerForm = () => {
     console.error("Uh oh, trouble rendering the new player form!", err);
   }
 };
-// Testing for split on teams /////////////////////////
-// Group players by teamID
-const groupPlayersByTeam = (players) => {
-  return players.reduce((groupedPlayers, player) => {
-    const teamKey = player.teamID;
-    if (!groupedPlayers[teamKey]) {
-      groupedPlayers[teamKey] = [];
-    }
-    groupedPlayers[teamKey].push(player);
-    return groupedPlayers;
-  }, {});
-};
+//////////////////////////////////////// Testing for split on teams //////////////////////////////////////////////////
+// // Group players by teamID
+// const groupPlayersByTeam = (players) => {
+//   return players.reduce((groupedPlayers, player) => {
+//     const teamKey = player.teamID;
+//     if (!groupedPlayers[teamKey]) {
+//       groupedPlayers[teamKey] = [];
+//     }
+//     groupedPlayers[teamKey].push(player);
+//     return groupedPlayers;
+//   }, {});
+// };
 
-// Render grouped players
-const renderGroupedPlayers = (groupedPlayers) => {
-  for (const team in groupedPlayers) {
-    const teamContainer = document.createElement("div");
-    teamContainer.innerHTML = `<h2>Team ${team}</h2>`;
-    groupedPlayers[team].forEach((player) => {
-      const playerElement = document.createElement("p");
-      playerElement.textContent = `Player ID: ${player.id}, Player Name: ${player.name}`;
-      teamContainer.appendChild(playerElement);
-    });
-    playerContainer.appendChild(teamContainer);
-  }
-};
+// // Render grouped players
+// const renderGroupedPlayers = (groupedPlayers) => {
+//   for (const team in groupedPlayers) {
+//     const teamContainer = document.createElement("div");
+//     teamContainer.innerHTML = `<h2>Team ${team}</h2>`;
+//     groupedPlayers[team].forEach((player) => {
+//       const playerElement = document.createElement("p");
+//       playerElement.textContent = `Player ID: ${player.id}, Player Name: ${player.name}`;
+//       teamContainer.appendChild(playerElement);
+//     });
+//     playerContainer.appendChild(teamContainer);
+//   }
+// };
+
+// const renderTeams = (teamlist) => {
+//   try{
+
+//   }
+// }
 // Testing for split on teams /////////////////////////
 
 // Fetch all players, group them by teamID and render
